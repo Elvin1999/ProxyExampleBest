@@ -7,10 +7,10 @@ namespace Proxy
     {
             static void Main(string[] args)
             {
+                IMovieSearcher searcher = new LocalMovieSearcher(new GlobalMovieSearcher());   //LocalMovieSearcher -proxy
                 while (true)
                 {
 
-                IMovieSearcher searcher = new LocalMovieSearcher(new GlobalMovieSearcher());   //LocalMovieSearcher -proxy
                     Console.Write("Serch: ");
                     ShowMovieData(searcher.SearchByTitle(Console.ReadLine()));
                     Console.ReadKey();

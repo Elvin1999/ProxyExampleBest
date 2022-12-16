@@ -16,7 +16,6 @@ namespace Proxy
                 new Movie() {Title="A1", Country = "Azerbaijan", Director = "Haci", Genre = "Action", Actors = "Maga"},
                 new Movie() {Title="A2", Country = "Azerbaijan", Director = "Samur", Genre = "Dram", Actors = "Bred Pit"},
                 new Movie() {Title="A3", Country = "Azerbaijan", Director = "Elesger", Genre = "Detective", Actors = "Benedict"}
-
             };
         }
         public Movie SearchByTitle(string title)
@@ -27,9 +26,10 @@ namespace Proxy
             }
             else
             {
-                return globalMovieSearcher.SearchByTitle(title);
+                var fromGlobal= globalMovieSearcher.SearchByTitle(title);
+                localMovieDB.Add(fromGlobal);
+                return fromGlobal;
             }
         }
     }
-    
 }
